@@ -1,0 +1,54 @@
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+require("dotenv").config();
+var cors = require("cors");
+const cookieParser = require("cookie-parser");
+const errorHandler = require("../backend/middleware/error")
+
+
+//IMPORT ROUTES
+const authRoutes = require("../backend/routes/authRoutes")
+const userRoutes = require("../backend/routes/userRoutes")
+const jobsTypeRoutes = require("../backend/routes/jobsTypeRoutes")
+const jobsRoutes = require("../backend/routes/jobsRoutes")
+
+
+//DATABASE CONNECTION
+mongoose.connect(process.env.DATABASE).then(() => console.log("Database Connected"))
+  .catch((err)=>console.log(err));
+
+
+
+
+//MIDDLEWARE
+app.use(morgan('dev'));
+app.use(bodyParser.json({limit: "5mb"}));
+app.use(bodyParser.urlencoded({
+    limit: "5mb",
+    extended: true
+}));
+app.use(cookieParser());
+app.use(cors({
+  origin: ["http://localhost:3000", "http://Opportunity-Poral-SAC_IITKGP.onrender.com"]
+}));
+
+//ERROR MIDDLEWARE
+app.use(errorHandler);
+
+
+//ROUTER MIDDLEWARE
+app.use('/api', authRoutes);
+app.use('/api', userRoutes);
+app.use('/api', jobsTypeRoutes);
+app.use('/api', jobsRoutes);
+
+
+//port
+const port = process.env.PORT || 8000
+
+app.listen(port, ()=>{
+    console.log(`Server running on port ${port}`);
+});
