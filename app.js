@@ -6,14 +6,14 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 var cors = require("cors");
 const cookieParser = require("cookie-parser");
-const errorHandler = require("../backend/middleware/error")
+const errorHandler = require("./middleware/error")
 
 
 //IMPORT ROUTES
-const authRoutes = require("../backend/routes/authRoutes")
-const userRoutes = require("../backend/routes/userRoutes")
-const jobsTypeRoutes = require("../backend/routes/jobsTypeRoutes")
-const jobsRoutes = require("../backend/routes/jobsRoutes")
+const authRoutes = require("./routes/authRoutes")
+const userRoutes = require("./routes/userRoutes")
+const jobsTypeRoutes = require("./routes/jobsTypeRoutes")
+const jobsRoutes = require("./routes/jobsRoutes")
 
 
 //DATABASE CONNECTION
