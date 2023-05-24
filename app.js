@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(cors({
-  origin: ["http://localhost:3000", "http://Opportunity-Poral-SAC_IITKGP.onrender.com"]
+  origin: ["http://localhost:3000", "http://opportunity-portal-backend.onrender.com"]
 }));
 
 //ERROR MIDDLEWARE
