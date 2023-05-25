@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(cors({
-  origin: ["http://localhost:3000", "http://opportunity-portal-backend.onrender.com"]
+  origin: ["https://646f580f870e430bcbb76bfc--reliable-panda-1a9bbb.netlify.app", "http://opportunity-portal-backend.onrender.com"]
 }));
 
 //ERROR MIDDLEWARE
